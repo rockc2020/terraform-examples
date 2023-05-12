@@ -7,6 +7,14 @@ locals {
     protocol    = "-1"
     cidr_blocks = [cidr]
     } },
+    { for cidr in var.eks_worker_access_cidrs : cidr => {
+      description = "Allow private K8S ingress from custom CIDR source."
+      type        = "ingress"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = [cidr]
+    } },
     {
       ingress_self_all = {
         description = "Node to node for all ports/protocols"
