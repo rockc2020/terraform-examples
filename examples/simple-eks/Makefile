@@ -20,7 +20,7 @@ init:
 	$(RUNTIME) init -var aws_region="${REGION}" -var aws_profile="${PROFILE}" -var name="${NAME}" -backend-config="bucket=${BUCKET}" -backend-config="key=${NAME}.tfstate" -backend-config="region=${REGION}" -backend-config="profile=${PROFILE}"
 
 .PHONY: deploy
-step1: init
+deploy: init
 	$(RUNTIME) apply -var aws_region="${REGION}" -var aws_profile="${PROFILE}" -var name="${NAME}" -var-file=./deployment/deploy.tfvars
 	aws eks --profile ${PROFILE} --region ${REGION} update-kubeconfig --name ${NAME} --kubeconfig ${NAME}.kubeconfig
 
