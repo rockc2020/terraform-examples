@@ -26,4 +26,4 @@ deploy: init
 
 .PHONY: destroy
 destroy: init
-	$(RUNTIME) destroy -var aws_region="${REGION}" -var aws_profile="${PROFILE}" -var name="${NAME}" -var-file=./deployment/step1.tfvars
+	$(RUNTIME) destroy -var aws_region="${REGION}" -var aws_profile="${PROFILE}" -var name="${NAME}" -var-file=./deployment/deploy.tfvars
